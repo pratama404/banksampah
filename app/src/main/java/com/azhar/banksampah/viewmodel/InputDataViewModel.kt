@@ -32,14 +32,15 @@ class InputDataViewModel(application: Application) : AndroidViewModel(applicatio
         catatan: String
     ) {
         Completable.fromAction {
-            val modelDatabase = ModelDatabase()
-            modelDatabase.namaPengguna = nama_pengguna
-            modelDatabase.jenisSampah = jenis_sampah
-            modelDatabase.berat = berat
-            modelDatabase.harga = harga
-            modelDatabase.tanggal = tanggal
-            modelDatabase.alamat = alamat
-            modelDatabase.catatan = catatan
+            val modelDatabase = ModelDatabase(
+                namaPengguna = nama_pengguna,
+                jenisSampah = jenis_sampah,
+                berat = berat,
+                harga = harga,
+                tanggal = tanggal,
+                alamat = alamat,
+                catatan = catatan
+            )
             databaseDao?.insertData(modelDatabase)
         }
             .subscribeOn(Schedulers.io())

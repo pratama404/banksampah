@@ -3,6 +3,7 @@ package com.azhar.banksampah.viewmodel
 import android.app.Application
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.LiveData
+import androidx.lifecycle.MutableLiveData
 import com.azhar.banksampah.database.DatabaseClient.Companion.getInstance
 import com.azhar.banksampah.database.dao.DatabaseDao
 import com.azhar.banksampah.model.ModelDatabase
@@ -36,8 +37,8 @@ class RiwayatViewModel(application: Application) : AndroidViewModel(application)
 
     init {
         databaseDao = getInstance(application)?.appDatabase?.databaseDao()
-        dataBank = databaseDao.getAll()
-        totalSaldo = databaseDao.getSaldo()
+        dataBank = databaseDao?.getAll() ?: MutableLiveData(emptyList())
+        totalSaldo = databaseDao?.getSaldo() ?: MutableLiveData(0)
     }
 
 }

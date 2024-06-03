@@ -94,7 +94,7 @@ class InputDataActivity : AppCompatActivity() {
             override fun afterTextChanged(editable: Editable) {
                 inputBerat.removeTextChangedListener(this)
                 if (editable.length > 0) {
-                    countBerat = editable.toString()
+                    countBerat = editable.toString().toIntOrNull() ?: 0
                     setTotalPrice(countBerat)
                 } else {
                     inputHarga.setText(rupiahFormat(countHarga))

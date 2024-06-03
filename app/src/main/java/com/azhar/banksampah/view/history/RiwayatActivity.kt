@@ -93,7 +93,7 @@ class RiwayatActivity : AppCompatActivity(), RiwayatAdapterCallback {
         val alertDialogBuilder = AlertDialog.Builder(this)
         alertDialogBuilder.setMessage("Hapus riwayat ini?")
         alertDialogBuilder.setPositiveButton("Ya, Hapus") { dialogInterface: DialogInterface?, i: Int ->
-            val uid = modelDatabase.uid
+            val uid = modelDatabase!!.uid
             riwayatViewModel.deleteDataById(uid)
             Toast.makeText(this@RiwayatActivity, "Data yang dipilih sudah dihapus", Toast.LENGTH_SHORT).show()
         }
